@@ -1,0 +1,51 @@
+using System;
+
+class Shelf
+{
+    public string[] Books;
+    public string[] Authors;
+
+    public Shelf(string[] books, string[] authors)
+    {
+        Books = books;
+        Authors = authors;
+    }
+
+    public void Details()
+    {
+        for (int i = 0; i < Books.Length; i++)
+        {
+            Console.WriteLine("Author " + (i + 1) + ": " + Authors[i]);
+            Console.WriteLine("Book " + (i + 1) + ": " + Books[i]);
+            Console.WriteLine();
+        }
+    }
+}
+
+class Library
+{
+    public string ShelfGenre;
+    public Shelf shelf;
+
+    public Library(string genre, Shelf shelfObject)
+    {
+        ShelfGenre = genre;
+        shelf = shelfObject;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        string[] books = { "IT", "The Shining" };
+        string[] authors = { "Stephen King", "Stephen King" };
+
+        Shelf horrorShelf = new Shelf(books, authors);
+        Library library = new Library("Horror", horrorShelf);
+
+        Console.WriteLine("Shelf Genre: " + library.ShelfGenre);
+        Console.WriteLine();
+        horrorShelf.Details();
+    }
+}
